@@ -1,7 +1,7 @@
 import { Module } from '@nestjs/common';
 import { APP_GUARD } from '@nestjs/core';
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
+// import { AppController } from './app.controller';
+// import { AppService } from './app.service';
 import { UserModule } from './users/users.module';
 import { CategoryModule } from './categories/categories.module';
 import { ProductModule } from './products/products.module';
@@ -18,17 +18,16 @@ import { UploadModule } from './upload/upload.module';
     ConfigModule.forRoot(),
     MongooseModule.forRoot(`${process.env.DB_PATH}`),
     UserModule, CategoryModule, ProductModule, AuthModule, UploadModule],
-  controllers: [AppController],
+  controllers: [],
   providers: [
-    AppService,
-    {
-      provide: APP_GUARD,
-      useClass: JwtAuthGuard,  
-    },
-    {
-      provide: APP_GUARD,
-      useClass: RolesGuard,  
-    },
+    // {
+    //   provide: APP_GUARD,
+    //   useClass: JwtAuthGuard,  
+    // },
+    // {
+    //   provide: APP_GUARD,
+    //   useClass: RolesGuard,  
+    // },
   ],
 })
 export class AppModule {}

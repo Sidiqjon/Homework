@@ -2,12 +2,13 @@ import { Controller, Get, Post, Body, Patch, Param, Delete, UseGuards } from '@n
 import { CategoryService } from './categories.service';
 import { CreateCategoryDto } from './dto/create-category.dto';
 import { UpdateCategoryDto } from './dto/update-category.dto';
-import { ApiTags, ApiOperation, ApiResponse } from '@nestjs/swagger';
+import { ApiTags, ApiOperation, ApiResponse, ApiBearerAuth } from '@nestjs/swagger';
 import { JwtAuthGuard } from '../auth/jwt-auth.guard';
 import { RolesGuard } from '../auth/role-based.guard';
 import { Roles } from '../common/role.decorator';
 import { UserRole } from '../common/role-enum';
 
+@ApiBearerAuth('JWT-Auth')
 @ApiTags('category')
 @Controller('category')
 @UseGuards(JwtAuthGuard, RolesGuard)

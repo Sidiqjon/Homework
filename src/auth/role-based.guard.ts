@@ -30,7 +30,7 @@ export class RolesGuard implements CanActivate {
     try {
       const decoded = this.jwtService.verify(token);
       request.user = decoded;
-
+      
       if (!requiredRoles.includes(decoded.role)) {
         throw new ForbiddenException('You do not have permission to access this resource');
       }

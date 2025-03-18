@@ -16,15 +16,6 @@ export class User extends Document {
   role: string;
 
   @Prop({ type: String })
-  region: string;
-
-  @Prop({ type: String })
-  shopName?: string;
-
-  @Prop({ type: String })
-  location?: string;
-
-  @Prop({ type: String })
   image?: string;
 }
 export const UserSchema = SchemaFactory.createForClass(User);

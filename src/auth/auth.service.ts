@@ -39,7 +39,7 @@ export class AuthService {
       throw new UnauthorizedException('Invalid phone or password');
     }
 
-    const payload = { userId: user._id, phone: user.phone };
+    const payload = { userId: user._id, phone: user.phone, role: user.role };
     const accessToken = this.jwtService.sign(payload);
     return { accessToken };
   }

@@ -24,21 +24,6 @@ export class CreateUserDto {
 
   @ApiProperty()
   @IsString()
-  @IsNotEmpty()
-  region: string;
-
-  @ApiProperty()
-  @IsString()
-  @IsOptional()
-  shopName?: string;
-
-  @ApiProperty()
-  @IsString()
-  @IsOptional()
-  location?: string;
-
-  @ApiProperty()
-  @IsString()
   @IsOptional()
   image?: string;
 }

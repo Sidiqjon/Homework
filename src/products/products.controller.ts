@@ -7,7 +7,9 @@ import { RolesGuard } from '../auth/role-based.guard';
 import { Roles } from '../common/role.decorator';
 import { UserRole } from '../common/role-enum';
 import { Request } from 'express';
+import { ApiBearerAuth, ApiQuery } from '@nestjs/swagger';
 
+@ApiBearerAuth('JWT-Auth')
 @Controller('products')
 @UseGuards(JwtAuthGuard, RolesGuard) 
 export class ProductController {
@@ -21,10 +23,19 @@ export class ProductController {
   }
 
   @Get()
-  @Roles(UserRole.ADMIN, UserRole.SUPER_ADMIN, UserRole.USER) 
-  async findAll(@Query('page') page: number, @Query('take') take: number, @Query('filter') filter: string, @Query('sort') sort: string) {
+  @ApiQuery({ name: 'page', required: false, type: Number })
+  @ApiQuery({ name: 'take', required: false, type: Number })
+  @ApiQuery({ name: 'filter', required: false, type: String })
+  @ApiQuery({ name: 'sort', required: false, type: String })
+  async findAll(
+    @Query('page') page?: number,
+    @Query('take') take?: number,
+    @Query('filter') filter?: string,
+    @Query('sort') sort?: string,
+  ) {
     return this.productService.findAll(page, take, filter, sort);
   }
+  
 
   @Get(':id')
   @Roles(UserRole.ADMIN, UserRole.SUPER_ADMIN, UserRole.USER)
