@@ -1,6 +1,6 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { Document } from 'mongoose';
-import { User } from '../../user/entities/user.entity';
+import { User } from '../../users/entities/user.entity';
 import { Category } from '../../categories/entities/category.entity';
 import { Types } from 'mongoose';
 
